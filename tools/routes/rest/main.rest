@@ -1,0 +1,13 @@
+GET http://localhost:3000/acc
+
+###
+
+GET http://localhost:8000/json
+
+###
+
+GET http://localhost:8000/json/resources
+
+###
+
+GET http://localhost:8000/json/resources/1

@@ -48,6 +48,19 @@ router.post('/', async (req, res) => {
     })
 })
 
+router.patch('/:username', getAcc, async (req, res) => {
+    
+})
+
+router.delete('/:username', getAcc, async (req, res) => {
+    try {
+        await Account.findOneAndDelete({ username: req.params.username });
+        res.json({ message: 'Deleted Account' })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
+
 async function getAcc(req, res, next){
     let acc;
     try {

@@ -43,7 +43,7 @@ const AccountSchema = new mongoose.Schema({
     }]
 })
 
-loginSchema.pre('save', async function(next){
+AccountSchema.pre('save', async function(next){
     //Check if username already exists
     
     if (!this.isModified('password')){
