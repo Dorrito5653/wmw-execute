@@ -2,6 +2,30 @@ GET http://localhost:3000/acc
 
 ###
 
+GET http://localhost:3000/acc/WMWOFFICIAL
+
+###
+
+POST http://localhost:3000/acc
+Content-Type: application/json
+
+{
+    "username": "WMWOFFICIAL",
+    "password": "#Egg21@vsianAI",
+    "email": "thewmbexecutegang@gmail.com",
+    "VIP": true,
+    "sessionId": "gF-2S46fBcwaSGds_sWtG6F2sZt52",
+    "created_date": 0,
+    "updated_date": 0,
+    "resources": [
+        {
+            "id": 1,
+            "amount": 6
+        }
+    ]
+}
+
+###
 GET http://localhost:8000/json
 
 ###

@@ -1,0 +1,176 @@
+body {
+    background-color: black;
+    font-size: 20px;
+    color: grey;
+    font-family: Tahoma;
+    text-align: center;
+    background: url("backgrounds/battle.jpg") no-repeat;
+    background-size: cover;
+}
+
+.title {
+    font-family: Papyrus;
+    font-size: 60px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+#sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: black;
+    padding: 16px;
+    text-align: left;
+}
+
+.links {
+    line-height: 40px;
+}
+
+.options {
+    position: absolute;
+    line-height: 30px;
+    top: 75%;
+    left: 10px;
+}
+
+#sidebar hr {
+    border: 2px solid grey;
+}
+
+.login-register {
+    position: absolute;
+    left: 10px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+#sidebar {
+    line-height: 40px;
+    border-bottom: 3px solid grey;
+    transform: translateX(-100%);
+    transition: 0.5s;
+    position: fixed;
+}
+
+.logo {
+    border-bottom: 3px solid grey;
+}
+
+.options {
+    position: absolute;
+    line-height: 30px;
+    top: 75%;
+    left: 10px;
+}
+
+.opt {
+    background-color: black;
+    color: white;
+    font-size: 24px;
+}
+
+.skip-link {
+    position: fixed;
+    left: 15%;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    transform: translateY(-200%);
+    transition: 200ms;
+    background-color: beige;
+}
+
+.skip-link:focus {
+    width: auto;
+    height: auto;
+    transform: translateY(100%);
+}
+
+.note-computer {
+    position: unset;
+    text-align: center;
+    font-style: italic;
+    color: grey;
+}
+
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 36px;
+    background-color: inherit;
+    color: red;
+}
+
+.closebtn:hover {
+    cursor: pointer;
+    
+}
+
+.sidebar-openbtn {
+    position: fixed;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    top: 0;
+}
+
+.sidebar-openbtn:hover {
+    background-color: #444;
+}
+
+.sidebar-openbtn, .closebtn, .closebtn-br {
+    display: initial;
+}
+
+#sidebar {
+    transform: translateX(-100%);
+}
+
+@media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 768px) {
+        .title {
+            font-size: 45px;
+        }
+        .note-computer {
+            font-size: large;
+        }
+    }
+
+    @media only screen and (max-width: 440px) {
+        body{ 
+            background: url('backgrounds/phone.jpg') no-repeat;
+            background-size: cover;
+        }
+        .title {
+            font-size: xx-large;
+        }
+        .note-computer {
+            position: absolute;
+            bottom: 20vh;
+            right: 0;
+            text-align: right;
+            font-size: medium;
+            overflow: hidden;
+        }
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    #sidebar {
+        transform: none;
+    }
+
+    .closebtn-br, .closebtn, .sidebar-openbtn {
+        display: none;
+    }
+}

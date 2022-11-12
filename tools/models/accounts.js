@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
 const AccountSchema = new mongoose.Schema({
     username: mongoose.Schema.Types.String,
     password: mongoose.Schema.Types.String,
