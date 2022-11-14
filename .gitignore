@@ -4,4 +4,7 @@ node_modules
 
 #Secrets
 *.env
+client_secret.json
 
+#Logs
+logs
