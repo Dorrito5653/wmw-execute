@@ -2,16 +2,22 @@ const express = require('express');
 const router = express.Router()
 const Account = require('../models/accounts')
 const bcrypt = require('bcrypt')
+const gentoken = require('../functions/gentoken')
 
 //Get all
 router.get('/', async (req, res) => {
     try {
-    if (req.headers['sessionId']) {
-        const accBySessionId = await Account.find({ sessionId: req.headers['sessionId'] });
-        res.json(accBySessionId)
+    if (req.headers['token']) {
+        console.log('Token Came Through!')
+        const accBytoken = await Account.find({ token: req.headers['token'] });
+        if (!accBytoken || accBytoken.length == 0) {
+            res.status(404).json("Account does not exist") 
+        } else {
+            res.status(201).json(accBytoken)
+        }
+        return;
     }
-        const accounts = await Account.find()
-        res.json("We won't give you all of our accounts lol!")
+    res.json("We won't give you all of our accounts lol!")
     } catch (err){
         res.status(500).json({ message: err.message })
     }
@@ -20,7 +26,17 @@ router.get('/', async (req, res) => {
 //Get one
 router.get('/:username', getAcc, async (req, res) => {
     let user = await Account.find(req.body.username)
-    if (!req.headers['password']) return;
+    if (!req.headers['password']) {
+        var newUser = user[0].toJSON()
+        var nextuser = newUser
+        delete nextuser.email
+        delete nextuser.password
+        delete nextuser.token
+        console.log(nextuser)
+        res.status(201).json(nextuser)
+        return;
+    }
+
     console.log(req.headers['password'])
     const check = await bcrypt.compare(req.headers['password'], user[0].password);
     console.log(check)
@@ -31,21 +47,19 @@ router.get('/:username', getAcc, async (req, res) => {
     res.status(201).json(res.acc)
 })
 
-//Get one by sessionId
-router.get('/:sessionId', getAcc, async (req, res) => {
-    res.json(res.acc)
-})
-
 //Creating one
 router.post('/', async (req, res) => {
+    req.body = JSON.parse(req.body)
     const acc = new Account({
         username: req.body.username,
         password: req.body.password,
         email: req.body.email,
         VIP: req.body.VIP,
-        sessionId: req.body.sessionId,
+        token: await gentoken(),
         created_date: req.body.created_date,
         updated_date: req.body.updated_date,
+        xp: req.body.xp,
+        level: req.body.level,
         resources: req.body.resources
     })
     try {

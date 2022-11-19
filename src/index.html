@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../meta/styles.css">
     <script src="../meta/animations/sidebar.js"></script>
+    <script src="scripts/login.js"></script>
     <script src="https://kit.fontawesome.com/2e99b0edee.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../meta/favicon.ico">
     <title>WMW EXECUTE</title>
@@ -49,8 +50,49 @@
         <h1 class="title">World Map Warfare Execution</h1>
         <div class="note-computer">
             <p id="start-btn">Press <a href="game.html">START</a> To Begin (Computer Version).</p>
-            <p class="note">Get best visuals on your computer. </p>
+            <p class="note">Get best visuals on bigger screen devices. </p>
+        </div>
+        <div class="multi-menus" onclick="openGadgets()">
+            <div class="welcome" id="welcome">
+                <h1>WELCOME BACK 
+                    <span id="player-username">Player154136</span>
+                    <img class="welcome-profile" id="welcome-profile" src="../meta/logo/user-logo.jpg" width="40" height="40">
+                </h1>
+                <div class="welcome-menu-btns">
+                </div>
+            </div>
+            <div class="menu-popup" id="menu-popup">
+                <div class="friends" id="friends">
+                    <!-- <button id="menu-friends-open" class="menu-btn">
+                        <i class="fa-solid fa-user-group"></i>
+                    </button>
+                    <div class="popup friends-popup" id="friends-popup">
+                        
+                    </div>
+                    <div class="notification" id="notification-friends">
+    
+                    </div> -->
+                </div>
+                <div class="emails" id="emails">
+                    <div class="popup emails-popup" id="emails-popup">
+
+                    </div>
+                    <div class="notification" id="notification-email">
+
+                    </div>
+                </div>
+                <div class="customizations" id="customizations">
+                    
+                </div>
+                <div class="achievements" id="achievements">
+    
+                </div>
+                <div class="timedisplay" id="timedisplay">
+    
+                </div>
+            </div>
         </div>
     </div>
+    <script src="scripts/index.js"></script>
 </body>
 </html>

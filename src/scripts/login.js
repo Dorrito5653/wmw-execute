@@ -37,7 +37,7 @@ async function loginBySubmit(){
         }
         alert(jsonResponse)
         let parsedRes = JSON.parse(jsonResponse)
-        let newWindow = window.open(`https://dorrito5653.github.io/wmw-execute/src/game.html`)
-        newWindow.localStorage.setItem('sessionId', `${parsedRes[0].sessionId}`)
+        let newWindow = window.open(`https://dorrito5653.github.io/wmw-execute/src/index.html`)
+        newWindow.localStorage.setItem('token', `${parsedRes[0].token}`)
     }
 }

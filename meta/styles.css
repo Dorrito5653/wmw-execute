@@ -136,6 +136,53 @@ body {
     transform: translateX(-100%);
 }
 
+.multi-menus {
+    display: flex;
+    position: absolute;
+    bottom: 3vh;
+    right: 3vw;
+    width: auto;
+    background: black;
+    text-align: center;
+    border-radius: 100px / 50px;
+    border: 10px solid gold;
+}
+
+.multi-menus:hover {
+    cursor: pointer;
+    background: darkgrey;
+}
+
+.welcome {
+    vertical-align: center;
+    text-align: center;
+}
+
+.welcome h1 {
+    margin: 2vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2vw;
+    float: left;
+}
+
+#player-username {
+    font-size: calc(2vw + 2px);
+    font-style: italic;
+    text-decoration-line: underline;
+}
+
+.welcome-profile {
+    float: inline-end;
+    vertical-align: bottom;
+    width: 3vw;
+    height: 3vw;
+    border: 2px solid grey;
+}
+
+.menu-popup {
+
+}
+
 @media only screen and (max-width: 1024px) {
     @media only screen and (max-width: 768px) {
         .title {
@@ -172,5 +219,19 @@ body {
 
     .closebtn-br, .closebtn, .sidebar-openbtn {
         display: none;
+    }
+
+    @media only screen and (min-width: 1331px) {
+        .title {
+            font-size: 75px
+        }
+    
+        .note-computer {
+            font-size: 30px;
+        }
+    
+        .note-computer .note{
+            display: none;
+        }
     }
 }

@@ -14,7 +14,6 @@ Content-Type: application/json
     "password": "#Egg21@vsianAI",
     "email": "thewmbexecutegang@gmail.com",
     "VIP": true,
-    "sessionId": "gF-2S46fBcwaSGds_sWtG6F2sZt52",
     "created_date": 0,
     "updated_date": 0,
     "resources": [

@@ -5,9 +5,11 @@ const AccountSchema = new mongoose.Schema({
     password: mongoose.Schema.Types.String,
     email: mongoose.Schema.Types.String,
     VIP: mongoose.Schema.Types.String,
-    sessionId: mongoose.Schema.Types.String,
+    token: mongoose.Schema.Types.String,
     created_date: mongoose.Schema.Types.Date,
     updated_date: mongoose.Schema.Types.Date,
+    xp: mongoose.Schema.Types.Number,
+    level: mongoose.Schema.Types.Number,
     country: {
         name: mongoose.Schema.Types.String,
         territory: mongoose.Schema.Types.Number,
@@ -41,6 +43,11 @@ const AccountSchema = new mongoose.Schema({
         id: mongoose.Schema.Types.String,
         level: mongoose.Schema.Types.Number,
         amount: mongoose.Schema.Types.Number
+    }],
+    friends: [{
+        username: mongoose.Schema.Types.String,
+        xp: mongoose.Schema.Types.Number,
+        level: mongoose.Schema.Types.Number,
     }]
 })
 
