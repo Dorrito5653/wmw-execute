@@ -16,13 +16,15 @@
   "bugs": {
     "url": "https://github.com/Dorrito5653/wmw-execute/issues"
   },
-  "homepage": "https://github.com/Dorrito5653/wmw-execute/src/index.html",
+  "homepage": "https://github.com/Dorrito5653/wmw-execute/app/index.html",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.7.2",
+    "mongoose": "^6.7.2"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }
