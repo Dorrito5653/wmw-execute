@@ -1,12 +1,32 @@
+/**
+ * Checks if there is a point in a circle
+ * @param {number} x X position of the point 
+ * @param {number} y Y position of the point
+ * @param {number} cx X coordinate of the center of the circle
+ * @param {number} cy Y coordinate of the center of the circle
+ * @param {number} r Radius of the circle
+ * @returns { boolean } Returns boolean of whether the point is in the circle
+ */
 function isPointInCircle(x, y, cx, cy, r) {
     var distance = Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2));
     return distance < r;
 }
 
-function isPointInRect(x, y, squareX, squareY, squareSize) {
+
+/**
+ * 
+ * @param {number} x 
+ * @param {number} y 
+ * @param {number} squareX X Position of the top left corner of the square 
+ * @param {number} squareY Y Position of the top left corner of the square
+ * @param {number} squareSizeX Length of the square
+ * @param {number} squareSizeY Height of the square
+ * @returns 
+ */
+function isPointInRect(x, y, squareX, squareY, squareSizeX, squareSizeY) {
     const squareCorners = [
         [squareX, squareY],
-        [squareX + squareSize[0], squareY + squareSize[1]]
+        [squareX + squareSizeX, squareY + squareSizeY]
     ]
     return squareCorners[0][0] <= x && x <= squareCorners[1][0] && squareCorners[0][1] <= y && y <= squareCorners[1][1]
 }
@@ -140,7 +160,7 @@ class Button {
                     this.onclick(ev)
                 }
             } else {
-                if (isPointInRect(ev.offsetX, ev.offsetY, this.x, this.y, this.size)) {
+                if (isPointInRect(ev.offsetX, ev.offsetY, this.x, this.y, this.size[0], this.size[1])) {
                     this.onclick(ev)
                 }
             }
