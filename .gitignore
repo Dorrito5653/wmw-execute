@@ -166,3 +166,6 @@ client_secret.json
 
 #Logs
 logs
+
+#python cache
+pycache
