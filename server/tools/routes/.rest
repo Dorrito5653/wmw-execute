@@ -1,0 +1,20 @@
+GET http://127.0.0.1:5000
+
+###
+
+GET http://127.0.0.1:5000/users
+
+###
+
+GET http://127.0.0.1:5000/users/
+
+###
+
+POST http://127.0.0.1:5000/users?username=existence&email=thewmbexecutegang@gmail.com
+Content-Type: application/json
+password: 12345
+
+###
+
+DELETE http://127.0.0.1:5000/users
+token: 88143a93419669e321da610c6054be79ea3a7362589abefe5be3c6a5f39f34f5
