@@ -1,6 +1,6 @@
 #Modules
 node_modules
-
+.venv
 
 #Secrets
 *.env
