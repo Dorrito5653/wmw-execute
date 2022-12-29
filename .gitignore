@@ -1,5 +1,5 @@
 #Modules
-node_modules
+.venv
 
 
 #Secrets
@@ -8,3 +8,6 @@ client_secret.json
 
 #Logs
 logs
+
+#python cache
+pycache
