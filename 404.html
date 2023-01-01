@@ -24,16 +24,16 @@
 
 <body>
     <h1>404 Error: We could not find what you were looking for</h1>
-    <p id="countdown"></p>
+    <p>Taking you to the <a href='https://dorrito5653.github.io/wmw-execute/app/'>homepage</a> in: <span id="countdown"></p>
     <script>
         let seconds = 5,
             countdown = document.getElementById('countdown')
 
         function decrementCountdown() {
-            countdown.innerHTML = `Taking you to the <a href='https://dorrito5653.github.io/world-map-discord-initiate/src/'>homepage</a> in: ${seconds}`
+            countdown.innerHTML = `${seconds}`
             seconds -= 1
             if (seconds == 0) {
-                window.open('https://dorrito5653.github.io/world-map-discord-initiate/src/', '_self')
+                window.open('https://dorrito5653.github.io/wmw-execute/app/', '_self')
             }
         }
 
