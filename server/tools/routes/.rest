@@ -17,4 +17,9 @@ password: 12345
 ###
 
 DELETE http://127.0.0.1:5000/users
-token: 88143a93419669e321da610c6054be79ea3a7362589abefe5be3c6a5f39f34f5
+token: b'c2hhMjU2\n'$32135457d1f739b7cb32fa20bdb24ea8abce92d281334e4281261c83ed46a49e$b'J6dTuDCryaH6m9Z3xMxoukvZAS04+/qCONTDM5EU\n'
+
+###
+
+PATCH  http://127.0.0.1:5000/users?field={"password": "ksdfsdkfj"}
+token: b'c2hhMjU2\n'$09e98bf1f28e472d59819de65f2d15c0f178051ed33c71c2d9afc8dfb2c35b3c$b'J6dTuDCryaH6m9Z3xMxoukvZAS04+/qCONTDM5EU\n'

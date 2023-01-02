@@ -1,14 +1,14 @@
-from datetime import datetime
 import json
 import time
 import traceback
 from typing import Mapping
 import dotenv
-import re
 import os
 import pymongo
 from flask import Flask, request, Response
-from tools.functions import hashing
+from tools.functions.hashing import gen_token, hash_string, compare_hash_and_string
+import urllib.parse
+from flask_socketio import SocketIO
 
 dotenv.load_dotenv()
 
@@ -18,7 +18,8 @@ client = pymongo.MongoClient(connectionString)
 database = client['wmw-execut-main-db-0cf8f257b7d']
 users_db = database.users
 
-app = Flask(__name__)
+app = Flask(__name__) # potentially change this to github.io link
+socket = SocketIO(app)
 
 
 @app.route("/users")
