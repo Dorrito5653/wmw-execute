@@ -83,11 +83,20 @@ def create_user():
         username = request.args.get('username')
         password = request.headers.get('password')
         email = request.args.get('email')
+
+        if not all((username, password, email)):
+            return {
+                'message': 'There are some missing parameters, required parameters are username, password, and email'
+            }, 400
+        elif users_db.find_one({'username': username}) is not None:
+            return {
+                'message': 'That username is already taken'
+            }, 409
         data = {
             'username': username,
-            'password': password,
+            'password': hash_string(password),
             'email': email,
-            'token': hashing.gen_token(),
+            'token': gen_token(), #This will get saved in localStorage in the frontend
             'created': time.time(),
             'updated': time.time(),
             'friends': [],
@@ -102,12 +111,59 @@ def create_user():
     else:
         return {
             'message': 'user created successfully',
-        }, 200, data
+        }, 201, data
+
+
+@app.route('/users', methods=['PATCH'])
+def edit_user():
+    token = request.headers.get('token')
+    fields = urllib.parse.unquote(request.args.get('field'))
+    print(fields)
+    fields = json.loads(fields)
+    if not fields:
+        return {
+           'message': 'Field is required'
+        }, 400
+    if not token:
+        return {
+           'message': 'Forbidden, no token provided for authentication'
+        }, 403
+    user = users_db.find_one({ "token": token })
+    if user is None:
+        return {
+            'message': 'Could not find user'
+        }, 404
+    # Query, method
+    try:
+        # when the password is changed, a new token is generated
+        password = fields['password']
+        if password:
+            new_token = gen_token()
+            password = hash_string(password)
+            fields['password'] = password
+            fields['token'] = new_token
+        users_db.update_one(
+            { "token": token },
+            { "$set": fields }
+        )
+    except Exception:
+        traceback.print_exc()
+        return { 
+            'message': 'There was an error while editing the user'
+        }, 500
+    else:
+        return {
+            'message': 'Successfully edited user'
+        }, 200
 
 
 @app.route('/users', methods=['DELETE'])
-async def delete_user():
+def delete_user():
     token = request.headers.get('token')
+    if not token:
+        return {
+           'message': 'Forbidden, no token provided for authentication'
+        }, 403
     user = users_db.find_one({ "token": token })
     if user is None:
         return {
@@ -121,6 +177,7 @@ async def delete_user():
             'message': 'There was an error while deleting the user'
         }, 500
     else:
+        # we use Response instead of a dictionary to prevent an error with the user id
         return Response(json.dumps({
             "message": "User deleted successfully",
             "user": user
