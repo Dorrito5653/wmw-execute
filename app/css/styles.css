@@ -1,28 +1,27 @@
 body {
     background-color: black;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: grey;
     font-family: Tahoma;
     text-align: center;
-    background: url("../assets/backgrounds/battle.jpg") no-repeat;
+    background: url("../assets/backgrounds/battle.jpg") center center fixed;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
 
 .title {
     font-family: Papyrus;
-    font-size: 60px;
+    font-size: 3.75rem;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
 }
 
-#sidebar {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: black;
-    padding: 16px;
-    text-align: left;
+#main {
+    border-width: 2px;
+    border-color: white;
 }
 
 .links {
@@ -36,24 +35,12 @@ body {
     left: 10px;
 }
 
-#sidebar hr {
-    border: 2px solid grey;
-}
-
 .login-register {
     position: absolute;
     left: 10px;
     background-color: black;
     color: white;
-    font-size: 20px;
-}
-
-#sidebar {
-    line-height: 40px;
-    border-bottom: 3px solid grey;
-    transform: translateX(-100%);
-    transition: 0.5s;
-    position: fixed;
+    font-size: 1.25rem;
 }
 
 .logo {
@@ -70,7 +57,7 @@ body {
 .opt {
     background-color: black;
     color: white;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .skip-link {
@@ -95,45 +82,6 @@ body {
     text-align: center;
     font-style: italic;
     color: grey;
-}
-
-
-.closebtn {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 36px;
-    background-color: inherit;
-    color: red;
-}
-
-.closebtn:hover {
-    cursor: pointer;
-    
-}
-
-.sidebar-openbtn {
-    position: fixed;
-    font-size: 30px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    left: 0;
-    width: 45px;
-    height: 45px;
-    top: 0;
-}
-
-.sidebar-openbtn:hover {
-    background-color: #444;
-}
-
-.sidebar-openbtn, .closebtn, .closebtn-br {
-    display: initial;
-}
-
-#sidebar {
-    transform: translateX(-100%);
 }
 
 .multi-menus {
@@ -179,25 +127,30 @@ body {
     border: 2px solid grey;
 }
 
-.menu-popup {
-
-}
 
 @media only screen and (max-width: 1024px) {
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 868px) {
         .title {
-            font-size: 45px;
+            font-size: 2.8125rem;
         }
         .note-computer {
             font-size: large;
         }
     }
 
-    @media only screen and (max-width: 440px) {
-        body{ 
-            background: url('backgrounds/phone.jpg') no-repeat;
-            background-size: cover;
+    @media only screen and (max-width: 868px) and (min-width: 612px) {
+        .title {
+            font-size: 2.5rem;
         }
+    }
+
+    @media only screen and (max-width: 510px) {
+        .title {
+            font-size: 2.4rem;
+        }
+    }
+
+    @media only screen and (max-width: 440px) {
         .title {
             font-size: xx-large;
         }
@@ -212,7 +165,7 @@ body {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1250px) {
     #sidebar {
         transform: none;
     }
@@ -221,9 +174,9 @@ body {
         display: none;
     }
 
-    @media only screen and (min-width: 1331px) {
+    @media only screen and (min-width: 1400px) {
         .title {
-            font-size: 75px
+            font-size: 4.6875rem;
         }
     
         .note-computer {
