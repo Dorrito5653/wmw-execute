@@ -24,7 +24,7 @@
 
 <body>
     <h1>404 Error: We could not find what you were looking for</h1>
-    <p>Taking you to the <a href='https://dorrito5653.github.io/wmw-execute/app/'>homepage</a> in: <span id="countdown"></p>
+    <p>Taking you to the <a href='app/home/'>homepage</a> in: <span id="countdown"></p>
     <script>
         let seconds = 5,
             countdown = document.getElementById('countdown')
@@ -33,7 +33,7 @@
             countdown.innerHTML = `${seconds}`
             seconds -= 1
             if (seconds == 0) {
-                window.open('https://dorrito5653.github.io/wmw-execute/app/', '_self')
+                window.open('https://dorrito5653.github.io/wmw-execute/app/home/', '_self')
             }
         }
 
