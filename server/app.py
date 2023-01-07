@@ -12,7 +12,7 @@ from flask_socketio import SocketIO
 
 dotenv.load_dotenv()
 
-secret_user_attributes = ['email', 'password', 'token']
+secret_user_attributes = ['email', 'password', 'token', '_id']
 connectionString: str = os.getenv('DATABASE_URL', os.getenv('DBTOKEN'))
 client = pymongo.MongoClient(connectionString)
 database = client['wmw-execut-main-db-0cf8f257b7d']
@@ -25,11 +25,19 @@ socket = SocketIO(app)
 @app.route("/users")
 def return_users():
     try:
-        return_value = 'Username - Rank\n'
-        for user in users_db.find({}):
+        leaderboard_field = request.args.get('leaderboard_field') or 'xp'
+        return_value = []
+        query = {}
+        query[leaderboard_field] = { '$gt': 1 }
+        sorting = [
+            (leaderboard_field, pymongo.DESCENDING),
+        ]
+
+        for user in users_db.find(query, limit=100).sort(sorting):
             user: Mapping[str]
             user = {k: v for k, v in user.items() if k not in secret_user_attributes}
-            return_value += ' - '.join(user.keys())
+            return_value.append(user)
+
     except Exception:
         traceback.print_exc()
         return {
@@ -41,7 +49,32 @@ def return_users():
         }, 200
 
 
-@app.route("/users/<id>")
+@app.route('/users/getByToken/')
+def get_user_by_token():
+    try:
+        token = request.headers.get('token')
+        if token is None:
+            return {
+                'message': 'No token provided in headers'
+            }, 400
+        user = users_db.find_one({ 'token': token })
+        if user is None:
+            return {
+                'message': 'No user with that token exists'
+            }, 404
+    except Exception:
+        traceback.print_exc()
+        return {
+            'message': 'There was an error while getting this user'
+        }, 500
+    else:
+        return Response(json.dumps({
+            'message': 'successfully got user',
+            'user': user
+        }, default=str), 200, content_type='json')
+
+
+@app.route("/users/searchById/<id>")
 def return_user():
     user_id = request.url.split('/')[-1]
     try:
@@ -97,11 +130,13 @@ def create_user():
             'username': username,
             'password': hash_string(password),
             'email': email,
-            'token': gen_token(), #This will get saved in localStorage in the frontend
+            'token': gen_token(), # This will get saved in localStorage in the frontend
             'created': time.time(),
             'updated': time.time(),
             'friends': [],
-            'stats': []
+            'stats': [],
+            'xp': 0,
+            'level': 0
         }
         result = users_db.insert_one(data)
     except Exception:
