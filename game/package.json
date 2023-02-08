@@ -1,0 +1,21 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "productName": "World Map Warfare",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "tsc ; electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^23.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "dotenv": "^16.0.3"
+  }
+}

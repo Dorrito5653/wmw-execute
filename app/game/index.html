@@ -9,47 +9,13 @@
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/game.css">
     <link rel="icon" href="../favicon.ico">
-    <script src="../src/scripts/game.js"></script>
+    <script src="../src/scripts/websocket.js" type="module"></script>
     <title>WMW.EXE</title>
 </head>
 
 <body>
-    <div class="sidebar">
-        <button class="sidebar-openbtn" onclick="openNav()">&#9776;</button>
-        <div id="sidebar">
-            <button class="closebtn" onclick="closeNav()">&times;</button>
-            <br class="closebtn-br">
-            <a href="#options" class="skip-link">Skip to Login/Register</a>
-            <section id="links">
-            <div class="sidebar-logo">
-                <img class="logo" src="../assets/logos/favicon.png" height="50px" width="160px">
-            </div>
-            <hr>
-            <section class="links">
-                <i class="fa-solid fa-house"></i><a href="../home/">Homepage</a>
-                <i class="fa-brands fa-discord"></i><a href="https://discord.gg/4W25npgp">Discord</a><br>
-                <i class="fa-brands fa-github"></i><a href="https://github.com/Dorrito5653/world-map-discord-initiate">GitRepo</a><br>
-                <i class="fa-brands fa-youtube"></i><a href="https://www.youtube.com/channel/UCrFvY4HceTsKXYWpvSx-z7Q">Youtube</a><br>
-                <i class="fa-brands fa-twitter"></i><a href="https://www.youtube.com/channel/UCrFvY4HceTsKXYWpvSx-z7Q">Twitter</a><br>
-                <i class="fa-solid fa-circle-info"></i><a href="https://sites.google.com/view/wmbwiki/about">WIKI</a><br>
-                <i class="fa-solid fa-circle-info"></i><a href="../credits/">Credits</a>
-            </section>
-            </section>
-            <hr>
-            <section class="options" id="options">
-                <section class="opt">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                <a href="../login/">Login</a>
-                <!-- <a href="https://dorrito5653.github.io/wmw-execute/src/login.html"></a> -->
-                </section><br>
-                <section class="opt">
-                <i class="fa-solid fa-user-plus"></i>
-                <a href="../register/">Register</a>
-                <!-- <a href="https://dorrito5653.github.io/wmw-execute/src/login.html"></a> -->
-                </section>
-            </section>
-        </div>
-    </div>
+    
+    <canvas id="canvas"></canvas>
 
 </body>
 
