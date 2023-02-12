@@ -5,16 +5,28 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "tsc ; electron ."
+    "compile": "tsc",
+    "start": "electron .",
+    "dev": "electronmon .",
+    "package-win": "npx electron-packager . --platform=win32 --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.ico",
+    "package-linux": "npx electron-packager . --platform=linux --arch=x64 --ignore=^/dist --out=dist --overwrite",
+    "package-mac": "electron-packager . --platform=darwin --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.icns",
+    "package-osx": "electron-packager . Node-RED --platform=darwin --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.icns",
+    "package-win-ia32": "npx electron-packager . --platform=win32 --arch=ia32 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.ico",
+    "package-linux-ia32": "npx electron-packager . --platform=linux --arch=ia32 --ignore=^/dist --out=dist --overwrite",
+    "package-mac-ia32": "electron-packager . --platform=darwin --arch=ia32 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.icns",
+    "package-osx-ia32": "electron-packager . Node-RED --platform=darwin --arch=ia32 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.icns"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "electron": "^23.0.0",
+    "electron-packager": "^17.1.1",
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "electron": "^23.0.0",
     "@types/node": "^18.13.0",
     "dotenv": "^16.0.3"
   }

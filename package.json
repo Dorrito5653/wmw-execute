@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "electronmon": "^2.0.2"
+  }
+}
