@@ -1,6 +1,7 @@
 node_modules/
 package-lock.json
 game/*.js
+game/renderer/scripts/*.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
