@@ -6,6 +6,7 @@ const isDev = process.env.NODE_ENV !== 'development'
 function createMainWindow() {
     const mainWindow = new BrowserWindow({
         title: "World Map Warfare",
+        icon: "assets/icons/",
         fullscreen: true,
     });
 
