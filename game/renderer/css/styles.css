@@ -1,5 +1,5 @@
 body {
-    background: radial-gradient(circle at center, navy, black);
+    background: linear-gradient(to right, black, navy);
     height: 100%;
     display: flex;
     margin: auto;
@@ -13,6 +13,21 @@ body {
 .sidemenu {
     width: 250px;
     height: 100%;
-    background-color: transparent;
+    background-color: black;
     color: white;
+    position: fixed;
+    left: 0;
+}
+
+#country-name {
+    font-family: rollbox-font;
+}
+
+.sidemenu-tab {
+    
+}
+
+.sidemenu-tab:hover {
+    padding: 10px;
+    background-color: gray;
 }
