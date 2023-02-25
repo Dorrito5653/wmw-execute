@@ -5,15 +5,10 @@ body {
     margin: auto;
 }
 
-@font-face {
-    font-family: rollbox-font;
-    src: url("../../assets/fonts/rollbox-font/RollboxLight-VGAXy.ttf")
-}
-
 .sidemenu {
     width: 100px;
     height: 100%;
-    background-color: black;
+    background-color: transparent !important;
     color: white;
     position: fixed;
     left: 0;

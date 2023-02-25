@@ -7,7 +7,7 @@
   "scripts": {
     "compile": "tsc",
     "start": "electron .",
-    "dev": "electronmon .",
+    "dev": "npx electronmon .",
     "package-win": "npx electron-packager . --platform=win32 --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.ico",
     "package-linux": "npx electron-packager . --platform=linux --arch=x64 --ignore=^/dist --out=dist --overwrite",
     "package-mac": "electron-packager . --platform=darwin --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.icns",

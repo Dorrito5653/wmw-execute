@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@types/node": "^18.13.0",
+    "electron": "^23.0.0",
     "electronmon": "^2.0.2"
   }
 }
