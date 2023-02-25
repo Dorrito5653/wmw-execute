@@ -11,7 +11,7 @@ body {
 }
 
 .sidemenu {
-    width: 250px;
+    width: 100px;
     height: 100%;
     background-color: black;
     color: white;
@@ -24,10 +24,25 @@ body {
 }
 
 .sidemenu-tab {
-    
+    width: 100px;
+    height: 100px;
+    display: block;
+    background-color: black;
 }
 
 .sidemenu-tab:hover {
-    padding: 10px;
     background-color: gray;
+}
+
+.sidemenu-tab img {
+    width: 100px;
+    height: 100px;
+}
+
+.sidemenu-tab-content {
+    position: relative;
+    left: 100px;
+    display: none;
+    height: 100vh;
+    width: 75px;
 }
