@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "target": "ES2018",
+        "lib": [
+            "ES2018",
+            "DOM",
+        ],
+    },
+    "include": [
+        "../../types/types.d.ts",
+        "scripts/*.ts",
+        "types/*.d.ts"
+    ]
+}
