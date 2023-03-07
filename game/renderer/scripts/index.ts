@@ -1,6 +1,24 @@
-var countryNameElement = document.getElementById('country-name')
-if (countryNameElement == null) throw new Error("country name is null");
+class LoadSocket implements ex.Loadable<WebSocket> {
+    data: WebSocket;
 
+    async load() {
+        socket = new WebSocket('ws://127.0.0.1:5555')
+        socket.onopen = onSocketOpen
+        return socket
+    }
+
+    isLoaded(): boolean {
+        return this.data.readyState == this.data.OPEN
+    }
+}
+
+let socket: WebSocket;
+const canvas = document.querySelector('canvas')
+const game = new ex.Engine({
+    canvasElement: canvas,
+})
+
+var countryNameElement = document.getElementById('country-name')
 
 function toTitleCase(str: string) {
     return str.replace(
@@ -15,7 +33,6 @@ document.querySelectorAll('.sidemenu button').forEach(element => {
     element.setAttribute('title', toTitleCase(element.id.replace('-', ' ')))
     element.addEventListener('click', ev => {
         let content = element.querySelector('div')
-        if (content == null) throw new Error("element is null");
         
         if (content.style.display === 'none') {
             content.style.display = 'inherit'
@@ -24,8 +41,6 @@ document.querySelectorAll('.sidemenu button').forEach(element => {
         }
     })
 });
-
-const socket = new WebSocket('ws://127.0.0.1:5555')
 
 function socketSend(data: WebSocketMessage) {
     socket.send(JSON.stringify(data))
@@ -38,8 +53,7 @@ function edit(edits: EditMessage) {
     })
 }
 
-socket.onopen = (ev) => {
-    if (countryNameElement == null) throw new Error("country name is null");
+function onSocketOpen(ev: Event) {
     socketSend({
         type: 'init',
         value: { 'country-name': countryNameElement.innerText }
@@ -47,6 +61,15 @@ socket.onopen = (ev) => {
 }
 
 countryNameElement.oninput = (ev) => {
-    if (countryNameElement == null) throw new Error("country name is null");
     edit({ "country-name": countryNameElement.innerText })
 }
+
+const loader = new ex.Loader()
+
+loader.addResource(new LoadSocket())
+
+
+loader.playButtonText = 'Play!'
+loader.backgroundColor = 'linear-gradient(to right, black, navy)'
+
+game.start(loader)

@@ -33,3 +33,11 @@ interface IntToObject {
     };
 }
 
+
+declare class Game {
+    id: number
+
+    constructor (
+        id: number
+    )
+}
