@@ -8,6 +8,9 @@ function createMainWindow() {
         title: "World Map Warfare",
         icon: "assets/icons/",
         fullscreen: true,
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
 
     //open dev tools if in developer mode
