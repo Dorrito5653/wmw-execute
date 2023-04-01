@@ -3,15 +3,25 @@
         "moduleResolution": "node",
         "downlevelIteration": true,
         "experimentalDecorators": true,
-        "target": "ES2018",
+        "target": "ES2015",
         "lib": [
-            "ES2018",
             "DOM",
+            "ES2015.Proxy",
+            "ES2015.promise",
+            "ES2015.collection",
+            "ES2015.iterable",
+            "ES2015"
         ],
+        "module": "ES2015",
+        "paths": {
+            "/excalibur": [
+                "../node_modules/excalibur/build/esm/excalibur.d.ts"
+            ]
+        }
     },
     "include": [
         "../../types/types.d.ts",
         "scripts/*.ts",
-        "types/*.d.ts"
+        
     ]
 }

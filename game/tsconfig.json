@@ -1,5 +1,8 @@
 {
     "exclude": [
         "renderer/*"
-    ]
+    ],
+    "compilerOptions": {
+        "module": "CommonJS"
+    }
 }
