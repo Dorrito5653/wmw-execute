@@ -34,4 +34,18 @@ function edit(edits: EditMessage) {
     })
 }
 
-export { edit, socketSend, socket, LoadSocket }
+function join(data: JoinMessage) {
+    socketSend({
+        type: 'join',
+        value: data
+    })
+}
+
+function init(data: any){
+    socketSend({
+        type: 'init',
+        value: data
+    })
+}
+
+export { edit, socketSend, socket, LoadSocket, join, init }
