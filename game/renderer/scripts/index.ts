@@ -1,5 +1,8 @@
 import * as ex from '../../node_modules/excalibur/build/esm/excalibur.js'
 import * as socket from './socket.js'
+import { Infantry, infantryImage } from './actors/infantry.js'
+import { Aircraft, aircraftImage } from './actors/aircraft.js'
+import { Tank, tankImage } from './actors/tank.js'
 
 const canvas = document.querySelector('canvas')
 const game = new ex.Engine({
@@ -37,7 +40,9 @@ countryNameElement.oninput = (ev) => {
 const loader = new ex.Loader()
 
 loader.addResource(new socket.LoadSocket(function () { }))
-
+loader.addResource(tankImage)
+loader.addResource(infantryImage)
+loader.addResource(aircraftImage)
 
 loader.playButtonText = 'Play!'
 loader.backgroundColor = 'linear-gradient(to right, black, navy)'
@@ -46,4 +51,13 @@ loader.logoHeight = 400
 loader.logoWidth = 400
 // loader.logoPosition = new ex.Vector()
 
+var tank = new Tank({
+    type: "Heavy Tank"
+})
+tank.pos.x = 150
+tank.pos.y = 100
+tank
+
 game.start(loader)
+
+game.currentScene.add(tank)
