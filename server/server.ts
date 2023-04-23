@@ -8,6 +8,7 @@ function join(gameId: number) {
 }
 
 server.on('connection', (ws) => {
+    console.log("Successfully connected to server");
     ws.on('error', console.error);
 
     ws.on('message', function message(data: WebSocketMessage) {
