@@ -1,18 +1,19 @@
-import * as ex from '../../../node_modules/excalibur/build/dist/excalibur.js'
+import * as ex from '../../../node_modules/excalibur/build/esm/excalibur.js'
+import { Unit } from './unit.js'
 
-export class Infantry extends ex.Actor {
-    soldiers: number
-    level: number
-    // https://excaliburjs.com/docs/actors/#custom-actors
+export const infantryImage = new ex.ImageSource('../assets/unit-icons/infantry.png')
+
+export class Infantry extends Unit {
     constructor({
-        soldiers = 10_000,
+        number = 10_000,
         level = 1,
     }) {
         super({
             width: 10,
             height: 10,
+            number: number || 200,
+            level: level || 1,
+            icon: infantryImage
         })
-        this.soldiers = soldiers
-        this.level = level
     }
 }

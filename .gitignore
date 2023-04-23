@@ -2,6 +2,7 @@ node_modules/
 package-lock.json
 game/*.js
 game/renderer/scripts/*.js
+game/renderer/scripts/actors/*.js
 .vscode/
 server/*.js
 
