@@ -1,9 +1,6 @@
 {
-  "type": "module",
-  "scripts": {
-    "compile": "node compile.js"
-  },
   "dependencies": {
+    "child_process": "^1.0.2",
     "chokidar": "^3.5.3"
   }
 }
