@@ -5,7 +5,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "compile": "tsc -w",
+    "compile": "tsc",
     "start": "electron .",
     "dev": "npx electronmon .",
     "package-win": "npx electron-packager . --platform=win32 --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.ico",
@@ -32,5 +32,5 @@
     "dotenv": "^16.0.3",
     "electron": "^23.0.0"
   },
-  "type": "commonjs"
+  "type": "module"
 }
