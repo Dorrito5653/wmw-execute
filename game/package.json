@@ -32,6 +32,5 @@
     "@types/node": "^18.13.0",
     "dotenv": "^16.0.3",
     "electron": "^23.0.0"
-  },
-  "type": "module"
+  }
 }
