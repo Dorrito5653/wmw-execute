@@ -3,6 +3,15 @@
         "renderer/*"
     ],
     "compilerOptions": {
-        "module": "CommonJS"
+        "target": "ES2015",
+        "lib": [
+            "DOM",
+            "ES2015.Proxy",
+            "ES2015.promise",
+            "ES2015.collection",
+            "ES2015.iterable",
+            "ES2015"
+        ],
+        "module": "CommonJS",
     }
 }

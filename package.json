@@ -1,5 +1,8 @@
 {
   "type": "module",
+  "scripts": {
+    "compile": "node compile.js"
+  },
   "dependencies": {
     "chokidar": "^3.5.3"
   }
