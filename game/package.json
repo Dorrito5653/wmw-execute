@@ -5,7 +5,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc -w",
     "start": "electron .",
     "dev": "npx electronmon .",
     "package-win": "npx electron-packager . --platform=win32 --arch=x64 --ignore=^/dist --out=dist --overwrite --icon=assets/icons/icon.ico",
