@@ -7,13 +7,13 @@ function createMainWindow() {
     const mainWindow = new BrowserWindow({
         title: "World Map Warfare",
         icon: "assets/icons/",
-        fullscreen: true,
+        fullscreen: true, 
         webPreferences: {
             nodeIntegration: true
         }
     });
 
-    //open dev tools if in developer mode
+    //open dev tools if in developer mode   
     if (isDev) {
         mainWindow.webContents.openDevTools()
     }

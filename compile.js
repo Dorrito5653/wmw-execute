@@ -3,7 +3,7 @@ var spawn = require('child_process').spawn
 
 
 // Directories to watch
-const directoriesToWatch = ['./game/', './server/', './game/renderer/']
+const directoriesToWatch = ['./game/', './server/', './game/renderer/', './game/renderer/scripts', './game/renderer/scripts/actors']
 
 for (let i = 0; i < directoriesToWatch.length; i++) {
   const directoryToWatch = directoriesToWatch[i];
@@ -12,19 +12,17 @@ for (let i = 0; i < directoriesToWatch.length; i++) {
 }
 
 function watchDir (dir) {
-  chokidar.watch(`${dir}/**/*.ts`, { ignored: /node_modules/ }).on('change', (path) => {
-    console.log(`File changed: ${path}`);
-    // Execute tsc -w command with the changed file as an argument
-    exec(`tsc -w ${path}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error: ${error.message}`);
-      }
-      if (stderr) {
-        console.error(`Stderr: ${stderr}`);
-      }
-      if (stdout) {
-        console.log(`Stdout: ${stdout}`);
-      }
-    });
+  const proc = spawn('npm', ['run', 'tsc-watch'], {cwd: dir, stdio: 'pipe', shell: true});
+  proc.stdout.on('data', function(data) {
+    console.log(`${dir}${data}`);
   });
+  proc.stderr.on('data', function(data) {
+    console.error(`${dir}${data}`);
+  });
+  proc.on('close', function(code, signal) {
+    console.log(`${dir} compiler has closed`);
+  });
+  proc.on('error', (err) => {
+    console.error(err.message)
+  })
 }

@@ -7,7 +7,7 @@ import { Tank, tankImage } from './actors/tank.js'
 const canvas = document.querySelector('canvas')
 const game = new ex.Engine({
     canvasElement: canvas,
-})
+})  
 
 var countryNameElement = document.getElementById('country-name')
 
@@ -19,7 +19,6 @@ function toTitleCase(str: string) {
         }
     );
 }
-
 document.querySelectorAll('.sidemenu button').forEach(element => {
     element.setAttribute('title', toTitleCase(element.id.replace('-', ' ')))
     element.addEventListener('click', ev => {
