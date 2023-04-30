@@ -12,7 +12,7 @@ class LoadSocket implements ex.Loadable<WebSocket> {
     async load() {
         socket = new WebSocket('ws://127.0.0.1:5555')
         socket.onopen = this.onopen
-        return socket
+        return socket  
     }
 
     isLoaded(): boolean {

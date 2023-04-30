@@ -16,9 +16,9 @@ function toTitleCase(str: string) {
         /\w\S*/g,
         function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
+        } 
     );
-}
+}    
 document.querySelectorAll('.sidemenu button').forEach(element => {
     element.setAttribute('title', toTitleCase(element.id.replace('-', ' ')))
     element.addEventListener('click', ev => {

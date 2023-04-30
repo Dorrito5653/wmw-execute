@@ -4,7 +4,7 @@ const server = new WebSocketServer({ port: 5555 });
 const games: IntToObject = {}
 
 function join(gameId: number) {
-    
+     
 }
 
 server.on('connection', (ws) => {
@@ -16,5 +16,5 @@ server.on('connection', (ws) => {
         if (data.type == 'join') {
             join(data.value.id)
         }
-    })
+    }) 
 })

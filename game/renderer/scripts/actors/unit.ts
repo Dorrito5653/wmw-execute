@@ -14,7 +14,7 @@ export abstract class Unit extends ex.Actor {
         width,
         height,
         icon
-    }) {
+    }) {                
         super({
             width: width,
             height: height,
