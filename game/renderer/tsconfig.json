@@ -13,11 +13,12 @@
             "ES2015"
         ],
         "module": "ES2015",
+        "sourceMap": false,
         "paths": {
-            "/excalibur": [
-                "../node_modules/excalibur/build/esm/excalibur.d.ts"
+            "@excalibur": [
+                "../../node_modules/excalibur/build/esm/excalibur.d.ts"
             ]
-        }
+        },
     },
     "include": [
         "../../types/types.d.ts",

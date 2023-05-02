@@ -7,7 +7,7 @@ function createMainWindow() {
     const mainWindow = new BrowserWindow({
         title: "World Map Warfare",
         icon: "assets/icons/",
-        fullscreen: true, 
+        fullscreen: true,
         webPreferences: {
             nodeIntegration: true
         }

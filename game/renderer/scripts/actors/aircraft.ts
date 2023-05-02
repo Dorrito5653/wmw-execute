@@ -8,7 +8,6 @@ interface ConstructorArgs {
     level?: number,
     type?: AircraftType,
 }
-  
 
 export class Aircraft extends Unit {
     type: AircraftType

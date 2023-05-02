@@ -3,8 +3,8 @@ import * as socket from './socket.js'
 import { Infantry, infantryImage } from './actors/infantry.js'
 import { Aircraft, aircraftImage } from './actors/aircraft.js'
 import { Tank, tankImage } from './actors/tank.js'
-
 const canvas = document.querySelector('canvas')
+
 const game = new ex.Engine({
     canvasElement: canvas,
 })  
@@ -56,6 +56,7 @@ var tank = new Tank({
 tank.pos.x = 150
 tank.pos.y = 100
 tank
+
 
 game.start(loader)
 
