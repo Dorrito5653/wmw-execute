@@ -3,7 +3,35 @@ import * as socket from './socket.js'
 import { Infantry, infantryImage } from './actors/infantry.js'
 import { Aircraft, aircraftImage } from './actors/aircraft.js'
 import { Tank, tankImage } from './actors/tank.js'
+// import { generateMap, TileType } from './map-generator.js'
+
+// function SetTileTexture(noise: number, x: number, y: number) {
+//     if (noise <= TileType.deepWater ) {
+//         ctx.fillStyle = "navy"
+//     } else if (noise < TileType.shallowWater && noise > TileType.deepWater) {
+//         ctx.fillStyle = "blue"
+//     } else if (noise > TileType.shallowWater && noise < TileType.plains ) {
+//         ctx.fillStyle = "#C2B280"
+//     } else if (noise >= TileType.plains && noise < TileType.hill) {
+//         ctx.fillStyle = "green"
+//     } else if (noise >= TileType.hill && noise < TileType.mountain) {
+//         ctx.fillStyle = "#b2790c"
+//     } else if (noise >= TileType.mountain) {
+//         ctx.fillStyle = "#757575"
+//     }
+//     ctx.fillRect(x, y, 1, 1)
+// }
+
 const canvas = document.querySelector('canvas')
+const ctx = canvas.getContext('2d')
+// const map_noise_grid = generateMap(canvas.width, canvas.height)
+// for (let i = 0; i < map_noise_grid.length; i++) {
+//     const row = map_noise_grid[i]
+//     for (let j = 0; j < row.length; j++) {
+//         const noise = map_noise_grid[i][j]
+//         SetTileTexture(noise, i, j)
+//     }
+// }
 
 const game = new ex.Engine({
     canvasElement: canvas,

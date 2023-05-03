@@ -10,7 +10,8 @@
             "ES2015.promise",
             "ES2015.collection",
             "ES2015.iterable",
-            "ES2015"
+            "ES2015",
+            "DOM.Iterable"
         ],
         "module": "ES2015",
         "sourceMap": false,
