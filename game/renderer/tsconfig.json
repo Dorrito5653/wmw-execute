@@ -18,6 +18,9 @@
         "paths": {
             "@excalibur": [
                 "../../node_modules/excalibur/build/esm/excalibur.d.ts"
+            ],
+            "@simplex-noise": [
+                "../../node_modules/simplex-noise/dist/esm/simplex-noise.d.ts"
             ]
         },
     },
