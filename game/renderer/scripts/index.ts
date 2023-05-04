@@ -70,6 +70,7 @@ loader.addResource(new socket.LoadSocket(function () { }))
 loader.addResource(tankImage)
 loader.addResource(infantryImage)
 loader.addResource(aircraftImage)
+loader.canvas
 
 loader.playButtonText = 'Play!'
 loader.backgroundColor = 'linear-gradient(to right, black, navy)'
@@ -87,5 +88,5 @@ tank
 
 
 game.start(loader)
-
+  
 game.currentScene.add(tank)
