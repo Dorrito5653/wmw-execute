@@ -5,28 +5,60 @@ import { Aircraft, aircraftImage } from './actors/aircraft.js'
 import { Tank, tankImage } from './actors/tank.js'
 import { generateMap, TileType } from './map-generator.js'
 
-const tileSize = 25
+const tileSize = 2
 
-function drawTile(noise: number, x: number, y: number) {
-    if (noise <= TileType.deepWater ) {
-        ctx.fillStyle = "darkblue"
-    } else if (noise < TileType.shallowWater && noise > TileType.deepWater) {
-        ctx.fillStyle = "blue"
-    } else if (noise > TileType.shallowWater && noise < TileType.beaches ) {
-        ctx.fillStyle = "yellow"
-    } else if (noise >= TileType.beaches && noise < TileType.hill) {
-        ctx.fillStyle = "green"
-    } else if (noise >= TileType.hill && noise < TileType.mountain) {
-        ctx.fillStyle = "darkgreen"
-    } else if (noise >= TileType.mountain) {
-        ctx.fillStyle = "#757575"
+function drawTile(type: TileType, x: number, y: number) {
+    let color = '#ffffff'
+    switch (type) {
+        case TileType.deepWater:
+            color = '#1c1cff'
+            break
+        case TileType.shallowWater:
+            color = '#0077be'
+            break
+        case TileType.beaches:
+            color = '#ffff00'
+            break
+        case TileType.plains:
+            color = '#3cb371'
+            break
+        case TileType.hills:
+            color = '#8fbc8f'
+            break
+        case TileType.mountains:
+            color = '#808080'
+            break
     }
+    ctx.fillStyle = color
     ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize)
 }
 
 const canvas = document.querySelector('canvas') as HTMLCanvasElement
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-const map_noise_grid = generateMap(25, 25)
+const map_noise_grid = generateMap(400, 600)
+
+
+for (let i = 0; i < map_noise_grid.length; i++) {
+    const row = map_noise_grid[i]
+    for (let j = 0; j < row.length; j++) {
+        const noise = map_noise_grid[i][j]
+        let tileType: TileType
+        if (noise <= TileType.deepWater) {
+            tileType = TileType.deepWater
+        } else if (noise < TileType.shallowWater) {
+            tileType = TileType.shallowWater
+        } else if (noise < TileType.beaches) {
+            tileType = TileType.beaches
+        } else if (noise < TileType.hills) {
+            tileType = TileType.plains
+        } else if (noise < TileType.mountains) {
+            tileType = TileType.hills
+        } else {
+            tileType = TileType.mountains
+        }
+        drawTile(tileType, j, i)
+    }
+}
 
 // const game = new ex.Engine({
 //     canvasElement: canvas,
@@ -79,14 +111,6 @@ document.querySelectorAll('.sidemenu button').forEach(element => {
 // tank.pos.x = 150
 // tank.pos.y = 100
 // tank
-
-for (let i = 0; i < map_noise_grid.length; i++) {
-    const row = map_noise_grid[i]
-    for (let j = 0; j < row.length; j++) {
-        const noise = map_noise_grid[i][j]
-        drawTile(noise, j, i)
-    }
-}
 
 // game.start(loader)
 
