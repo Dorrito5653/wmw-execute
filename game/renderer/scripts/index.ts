@@ -5,28 +5,28 @@ import { Aircraft, aircraftImage } from './actors/aircraft.js'
 import { Tank, tankImage } from './actors/tank.js'
 import { generateMap, TileType } from './map-generator.js'
 
-const tileSize = 2
+const tileSize = 1
 
 function drawTile(type: TileType, x: number, y: number) {
     let color = '#ffffff'
     switch (type) {
         case TileType.deepWater:
-            color = '#1c1cff'
+            color = 'blue'
             break
         case TileType.shallowWater:
-            color = '#0077be'
+            color = 'lightblue'
             break
         case TileType.beaches:
-            color = '#ffff00'
+            color = 'yellow'
             break
         case TileType.plains:
-            color = '#3cb371'
+            color = 'green'
             break
         case TileType.hills:
-            color = '#8fbc8f'
+            color = 'darkgreen'
             break
         case TileType.mountains:
-            color = '#808080'
+            color = 'gray'
             break
     }
     ctx.fillStyle = color
@@ -35,28 +35,14 @@ function drawTile(type: TileType, x: number, y: number) {
 
 const canvas = document.querySelector('canvas') as HTMLCanvasElement
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-const map_noise_grid = generateMap(400, 600)
+const map_noise_grid = generateMap(1000, 1000)
 
 
 for (let i = 0; i < map_noise_grid.length; i++) {
     const row = map_noise_grid[i]
     for (let j = 0; j < row.length; j++) {
         const noise = map_noise_grid[i][j]
-        let tileType: TileType
-        if (noise <= TileType.deepWater) {
-            tileType = TileType.deepWater
-        } else if (noise < TileType.shallowWater) {
-            tileType = TileType.shallowWater
-        } else if (noise < TileType.beaches) {
-            tileType = TileType.beaches
-        } else if (noise < TileType.hills) {
-            tileType = TileType.plains
-        } else if (noise < TileType.mountains) {
-            tileType = TileType.hills
-        } else {
-            tileType = TileType.mountains
-        }
-        drawTile(tileType, j, i)
+        drawTile(noise, j, i)
     }
 }
 
