@@ -9,9 +9,10 @@ export enum TileType {
     plains = 0.2,
     hills = 0.4,
     mountains = 0.6,
+    snow = 0.75,
 }
 
-const ELEVATION_FREQUENCY = 0.0045; // how often elevation changes
+const ELEVATION_FREQUENCY = 0.0043; // how often elevation changes
 const LAKE_FREQUENCY = 0.008;
 
 function getNoise(x: number, y: number, octaves: number = 7): number {
@@ -53,8 +54,10 @@ export function generateMap(width: number, height: number) {
                 tileType = TileType.plains;
             } else if (elevation < 0.75) {
                 tileType = TileType.hills;
-            } else {
+            } else if (elevation < 0.85) {
                 tileType = TileType.mountains;
+            } else {
+                tileType = TileType.snow;
             }
             row.push(tileType);
         }

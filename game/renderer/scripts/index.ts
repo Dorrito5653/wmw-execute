@@ -28,6 +28,9 @@ function drawTile(type: TileType, x: number, y: number) {
         case TileType.mountains:
             color = 'gray'
             break
+        case TileType.snow:
+            color = 'white'
+            break
     }
     ctx.fillStyle = color
     ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize)
@@ -35,7 +38,7 @@ function drawTile(type: TileType, x: number, y: number) {
 
 const canvas = document.querySelector('canvas') as HTMLCanvasElement
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-const map_noise_grid = generateMap(1280, 1280)
+const map_noise_grid = generateMap(2160, 3840)
 
 
 for (let i = 0; i < map_noise_grid.length; i++) {
@@ -45,12 +48,6 @@ for (let i = 0; i < map_noise_grid.length; i++) {
         drawTile(noise, j, i)
     }
 }
-
-// const game = new ex.Engine({
-//     canvasElement: canvas,
-// })
-
-// var countryNameElement = document.getElementById('country-name')
 
 function toTitleCase(str: string) {
     return str.replace(
@@ -72,6 +69,12 @@ document.querySelectorAll('.sidemenu button').forEach(element => {
         }
     })
 });
+
+// const game = new ex.Engine({
+//     canvasElement: canvas,
+// })
+
+// var countryNameElement = document.getElementById('country-name')
 
 // countryNameElement.oninput = (ev) => {
 //     socket.edit({ "country-name": countryNameElement.innerText })
