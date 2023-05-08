@@ -12,6 +12,7 @@ export enum TileType {
 }
 
 const ELEVATION_FREQUENCY = 0.0045; // how often elevation changes
+const LAKE_FREQUENCY = 0.008;
 
 export function generateMap(width: number, height: number) {
     let map: number[][] = [];
@@ -39,6 +40,5 @@ export function generateMap(width: number, height: number) {
         }
         map.push(row);
     }
-
     return map;
 }

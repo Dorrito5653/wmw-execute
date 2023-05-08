@@ -14,7 +14,7 @@ function drawTile(type: TileType, x: number, y: number) {
             color = 'blue'
             break
         case TileType.shallowWater:
-            color = 'lightblue'
+            color = 'rgb(39, 142, 173)'
             break
         case TileType.beaches:
             color = 'yellow'
@@ -35,7 +35,7 @@ function drawTile(type: TileType, x: number, y: number) {
 
 const canvas = document.querySelector('canvas') as HTMLCanvasElement
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-const map_noise_grid = generateMap(1000, 1000)
+const map_noise_grid = generateMap(1280, 1280)
 
 
 for (let i = 0; i < map_noise_grid.length; i++) {
