@@ -1,19 +1,51 @@
 import { createNoise2D } from '../../node_modules/simplex-noise/dist/esm/simplex-noise.js';
 
 const noise2D = createNoise2D();
+const tileSize = 1;
+const canvas = document.querySelector('canvas') as HTMLCanvasElement;
+const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-export enum TileType {
-    deepWater = -0.5,
-    shallowWater = -0.2,
-    beaches = 0,
-    plains = 0.2,
-    hills = 0.4,
-    mountains = 0.6,
-    snow = 0.75,
-}
+export const BiomesByElevation = [
+    {
+        biome: "ocean",
+        elevation_range: [-1, -0.1],
+        color: "blue"
+    },
+    {
+        biome: "lake",
+        elevation_range: [-0.1, 0],
+        color: "rgb(39, 142, 173)"
+    },
+    {
+        biome: "beach",
+        elevation_range: [0, 0.1],
+        color: "yellow"
+    },
+    {
+        biome: "plains",
+        elevation_range: [0.1, 0.55],
+        color: "green"
+    },
+    {
+        biome: "hills",
+        elevation_range: [0.55, 0.75],
+        color: "darkgreen"
+    },
+    {
+        biome: "mountains",
+        elevation_range: [0.75, 0.85],
+        color: "gray"
+    },
+    {
+        biome: "snowy_mountains",
+        elevation_range: [0.85, 1],
+        color: "white"
+    }
+]
+
+export const BiomesByMoisture = []
 
 const ELEVATION_FREQUENCY = 0.0043; // how often elevation changes
-const LAKE_FREQUENCY = 0.008;
 
 function getNoise(x: number, y: number, octaves: number = 7): number {
     let amplitudes: number[] = []
@@ -36,32 +68,41 @@ function getNoise(x: number, y: number, octaves: number = 7): number {
 }
 
 export function generateMap(width: number, height: number) {
-    let map: number[][] = [];
+    let map: {biome: string, elevation_range: [], color: string, elevation: number}[][] = [];
+    let poles: number[][] = [[], []];
+    const north_pole_ratio = 1/15;
+    const south_pole_ratio = 14/15;
 
     for (let x = 0; x < width; x++) {
-        let row: number[] = [];
+        let row = [];
         for (let y = 0; y < height; y++) {
             const elevation = getNoise(x, y)
 
-            let tileType = TileType.deepWater;
-            if (elevation < -0.1) {
-                tileType = TileType.deepWater
-            } else if (elevation < 0) {
-                tileType = TileType.shallowWater;
-            } else if (elevation < 0.1) {
-                tileType = TileType.beaches;
-            } else if (elevation < 0.55) {
-                tileType = TileType.plains;
-            } else if (elevation < 0.75) {
-                tileType = TileType.hills;
-            } else if (elevation < 0.85) {
-                tileType = TileType.mountains;
-            } else {
-                tileType = TileType.snow;
-            }
+            let tileType = determineBiome(elevation)
             row.push(tileType);
         }
         map.push(row);
     }
+
+    for (let i = 0; i < map.length; i++) {
+        const row = map[i];
+        for (let j = 0; j < row.length; j++) {
+            const color = map[i][j].color;
+            ctx.fillStyle = color;
+            ctx.fillRect(i * tileSize, j * tileSize, tileSize, tileSize)
+        }
+    }
+
     return map;
+}
+
+function determineBiome(elevation: number) {
+    let tileType = BiomesByElevation.find(biome => biome.biome = "ocean")
+    for (const biome of BiomesByElevation) {
+        if (elevation >= biome.elevation_range[0] && elevation < biome.elevation_range[1]) {
+            biome["elevation"] = elevation;
+            tileType = biome
+        }
+    }
+    return tileType
 }

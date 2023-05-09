@@ -3,51 +3,9 @@ import * as socket from './socket.js'
 import { Infantry, infantryImage } from './actors/infantry.js'
 import { Aircraft, aircraftImage } from './actors/aircraft.js'
 import { Tank, tankImage } from './actors/tank.js'
-import { generateMap, TileType } from './map-generator.js'
+import { generateMap } from './map-generator.js'
 
-const tileSize = 1
-
-function drawTile(type: TileType, x: number, y: number) {
-    let color = '#ffffff'
-    switch (type) {
-        case TileType.deepWater:
-            color = 'blue'
-            break
-        case TileType.shallowWater:
-            color = 'rgb(39, 142, 173)'
-            break
-        case TileType.beaches:
-            color = 'yellow'
-            break
-        case TileType.plains:
-            color = 'green'
-            break
-        case TileType.hills:
-            color = 'darkgreen'
-            break
-        case TileType.mountains:
-            color = 'gray'
-            break
-        case TileType.snow:
-            color = 'white'
-            break
-    }
-    ctx.fillStyle = color
-    ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize)
-}
-
-const canvas = document.querySelector('canvas') as HTMLCanvasElement
-const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-const map_noise_grid = generateMap(2160, 3840)
-
-
-for (let i = 0; i < map_noise_grid.length; i++) {
-    const row = map_noise_grid[i]
-    for (let j = 0; j < row.length; j++) {
-        const noise = map_noise_grid[i][j]
-        drawTile(noise, j, i)
-    }
-}
+const map = generateMap(1920, 1080)
 
 function toTitleCase(str: string) {
     return str.replace(
