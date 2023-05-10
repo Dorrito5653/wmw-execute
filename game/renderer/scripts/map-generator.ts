@@ -69,9 +69,6 @@ function getNoise(x: number, y: number, octaves: number = 7): number {
 
 export function generateMap(width: number, height: number) {
     let map: {biome: string, elevation_range: [], color: string, elevation: number}[][] = [];
-    let poles: number[][] = [[], []];
-    const north_pole_ratio = 1/15;
-    const south_pole_ratio = 14/15;
 
     for (let x = 0; x < width; x++) {
         let row = [];
