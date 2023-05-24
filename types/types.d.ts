@@ -41,3 +41,10 @@ declare class Game {
         id: number
     )
 }
+
+interface MapTile extends Map<string, any> {
+    biome: string,
+    elevation_range: [number, number],
+    color: [number, number, number],
+    elevation: number
+}
