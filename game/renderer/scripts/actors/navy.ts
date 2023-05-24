@@ -1,11 +1,12 @@
 import * as ex from '../../../node_modules/excalibur/build/esm/excalibur.js'
 import { Unit } from './unit.js'
 
+export const shipImage = new ex.ImageSource('../assets/unit-icons/navy.png')
+
 interface ConstructorArgs {
     number?: number,
     level?: number,
     type?: NavyType,
-    icon?: Buffer
 }
 
 export class Ship extends Unit {
@@ -17,7 +18,7 @@ export class Ship extends Unit {
             height: 10,
             number: args.number || 100,
             level: args.level || 1,
-            icon: args.icon
+            icon: shipImage
         })
         this.type = args.type
     }

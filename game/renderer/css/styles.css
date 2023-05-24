@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to right, black, navy);
+    background: linear-gradient(to top, rgba(0, 100, 0, 0.5), rgba(165, 42, 42, 0.178));
     height: 100%;
     display: flex;
     margin: auto;
@@ -22,7 +22,7 @@ body {
     width: 100px;
     height: 100px;
     display: block;
-    background-color: black;
+    background-color: gray;
 }
 
 .sidemenu-tab:hover {
