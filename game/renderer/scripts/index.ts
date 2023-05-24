@@ -4,9 +4,7 @@ import { Infantry, infantryImage } from './actors/infantry.js'
 import { Aircraft, aircraftImage } from './actors/aircraft.js'
 import { Tank, tankImage } from './actors/tank.js'
 import { generateMap } from './map-generator.js'
-
-const canvas = document.querySelector('canvas')
-const map = generateMap(1920, 1080)
+import { TileMapClass } from './actors/tilemap.js'
 
 function toTitleCase(str: string) {
     return str.replace(
@@ -15,7 +13,8 @@ function toTitleCase(str: string) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         } 
     );
-}    
+}
+
 document.querySelectorAll('.sidemenu button').forEach(element => {
     element.setAttribute('title', toTitleCase(element.id.replace('-', ' ')))
     element.addEventListener('click', ev => {
@@ -30,7 +29,7 @@ document.querySelectorAll('.sidemenu button').forEach(element => {
 });
 
 const game = new ex.Engine({
-    canvasElement: canvas,
+    canvasElementId: 'game'
 })
 
 var countryNameElement = document.getElementById('country-name')
@@ -54,7 +53,12 @@ var tank = new Tank({
 tank.pos.x = 150
 tank.pos.y = 100
 
+let mapRaw = generateMap(game.canvas.width, game.canvas.height)
+
+console.log(mapRaw)
+const map = new TileMapClass(mapRaw)
 
 game.start(loader)
-  
-game.currentScene.add(tank)
+
+game.add(map)
+game.add(tank)

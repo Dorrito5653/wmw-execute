@@ -2,46 +2,44 @@ import { createNoise2D } from '../../node_modules/simplex-noise/dist/esm/simplex
 
 const noise2D = createNoise2D();
 const tileSize = 1;
-const canvas = document.querySelector('canvas') as HTMLCanvasElement;
-const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
 export const BiomesByElevation = [
     {
         biome: "ocean",
         elevation_range: [-1, -0.1],
-        color: "blue"
+        color: [0, 0, 255]
     },
     {
         biome: "lake",
         elevation_range: [-0.1, 0],
-        color: "rgb(39, 142, 173)"
+        color: [39, 142, 173]
     },
     {
         biome: "beach",
         elevation_range: [0, 0.1],
-        color: "yellow"
+        color: [255, 255, 0]
     },
     {
         biome: "plains",
         elevation_range: [0.1, 0.55],
-        color: "green"
+        color: [0, 128, 0]
     },
     {
         biome: "hills",
         elevation_range: [0.55, 0.75],
-        color: "darkgreen"
+        color: [0, 100, 0]
     },
     {
         biome: "mountains",
         elevation_range: [0.75, 0.85],
-        color: "gray"
+        color: [128, 128, 128]
     },
     {
         biome: "snowy_mountains",
         elevation_range: [0.85, 1],
-        color: "white"
+        color: [255, 255, 255]
     }
-]
+] as const
 
 export const BiomesByMoisture = []
 
@@ -68,7 +66,7 @@ function getNoise(x: number, y: number, octaves: number = 7): number {
 }
 
 export function generateMap(width: number, height: number) {
-    let map: {biome: string, elevation_range: [], color: string, elevation: number}[][] = [];
+    let map: MapTile[][] = [];
 
     for (let x = 0; x < width; x++) {
         let row = [];
@@ -81,20 +79,11 @@ export function generateMap(width: number, height: number) {
         map.push(row);
     }
 
-    for (let i = 0; i < map.length; i++) {
-        const row = map[i];
-        for (let j = 0; j < row.length; j++) {
-            const color = map[i][j].color;
-            ctx.fillStyle = color;
-            ctx.fillRect(i * tileSize, j * tileSize, tileSize, tileSize)
-        }
-    }
-
     return map;
 }
 
 function determineBiome(elevation: number) {
-    let tileType = BiomesByElevation.find(biome => biome.biome = "ocean")
+    let tileType = BiomesByElevation.find(biome => biome.biome === "ocean")
     for (const biome of BiomesByElevation) {
         if (elevation >= biome.elevation_range[0] && elevation < biome.elevation_range[1]) {
             biome["elevation"] = elevation;
