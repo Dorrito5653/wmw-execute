@@ -21,8 +21,8 @@ export class TileMapClass extends ex.TileMap {
 
     constructor(map: MapTile[][]) {
         super({
-            columns: 600,
-            rows: 800,
+            columns: 800,
+            rows: 600,
             tileHeight: 1,
             tileWidth: 1
         })
