@@ -30,7 +30,7 @@ document.querySelectorAll('.sidemenu button').forEach(element => {
 });
 
 const game = new ex.Engine({
-    canvasElementId: 'game'
+    canvasElementId: 'game',
 })
 
 var countryNameElement = document.getElementById('country-name')
@@ -48,14 +48,13 @@ loader.addResource(infantryImage)
 loader.addResource(aircraftImage)
 loader.addResource(shipImage)
 // loader.logoPosition = new ex.Vector()
-loader.canvas
 var tank = new Tank({
     type: "Heavy Tank"
 })
 tank.pos.x = 150
 tank.pos.y = 100
 
-let mapRaw = generateMap(game.canvas.width, game.canvas.height)
+let mapRaw = generateMap(800, 600)
 
 console.log(mapRaw)
 const map = new TileMapClass(mapRaw)

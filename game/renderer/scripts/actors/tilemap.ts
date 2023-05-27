@@ -1,60 +1,38 @@
 import * as ex from '../../../node_modules/excalibur/build/esm/excalibur.js'
 import { BiomesByElevation } from '../map-generator.js'
 
-let graphicsArray: ex.Rectangle[] = []
-
-for (let biome of BiomesByElevation) {
-    let color = biome.color
-    let r = color[0],
-        g = color[1],
-        b = color[2]
-    graphicsArray.push(new ex.Rectangle({
-        color: new ex.Color(r, g, b),
-        width: 20,
-        height: 20
-    }))
+class Tile extends ex.Tile {
+    data: MapTile
 }
-
 
 export class TileMapClass extends ex.TileMap {
     rawData: MapTile[][]
+    tiles: Tile[]
 
     constructor(map: MapTile[][]) {
         super({
-            columns: 800,
-            rows: 600,
+            rows: map.length,
+            columns: map[0].length,
             tileHeight: 1,
             tileWidth: 1
         })
-        this.changeMap(map)
+        this.rawData = map
     }
 
-    changeMap(map: MapTile[][]) {
-        this.rawData = map
-
+    onInitialize(_engine: ex.Engine): void {
         for (const tile of this.tiles) {
-            let data = this.rawData[tile.y][tile.x],
-                color = data.color
-            tile.data = data
-            tile.clearGraphics()
-            let r = color[0],
-                g = color[1],
-                b = color[2],
-                graphic
-            
-            for (let gr of graphicsArray) {
-                if (
-                    gr.color.r == r &&
-                    gr.color.g == g &&
-                    gr.color.b == b
-                ) {
-                    graphic = gr
-                    break
-                }
-            }
-            
-            tile.addGraphic(graphic)
-            console.log(data)
+            tile.data = this.rawData[tile.y][tile.x]
+        }
+    }
+    
+    draw(ctx: ex.ExcaliburGraphicsContext, elapsedMilliseconds: number): void {
+        for (const tile of this.tiles) {
+            ctx.drawRectangle(
+                new ex.Vector(tile.x * tile.width, tile.y * tile.height),
+                tile.width,
+                tile.height,
+                new ex.Color(...tile.data.color)
+            )
         }
     }
 }
