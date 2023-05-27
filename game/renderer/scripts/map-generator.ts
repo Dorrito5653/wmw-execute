@@ -68,9 +68,9 @@ function getNoise(x: number, y: number, octaves: number = 7): number {
 export function generateMap(width: number, height: number) {
     let map: MapTile[][] = [];
 
-    for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
         let row = [];
-        for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
             const elevation = getNoise(x, y)
 
             let tileType = determineBiome(elevation)
